@@ -6,7 +6,9 @@ exports.arraysAnswers = {
   },
 
   sum: function(arr) {
-
+    return arr.reduce(function (sum, cur) {
+      return sum + cur;
+    });
   },
 
   remove: function(arr, item) {
