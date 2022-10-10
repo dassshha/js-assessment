@@ -17,6 +17,22 @@ exports.numbersAnswers = {
   },
 
   multiply: function(a, b) {
-    return parseFloat(a * b);
+    function adjust(num) {
+      var exponent, multiplier;
+
+      if (num < 1) {
+        exponent = Math.floor( Math.log(num) * -1 );
+        multiplier = Math.pow(10, exponent);
+
+        return {adjusted: num * multiplier, multiplier: multiplier};
+      }
+
+      return {adjusted: num, multiplier: 1};
+    }
+    var aNew = adjust(a);
+    var bNew = adjust(b);
+    var result = (aNew.adjusted * bNew.adjusted) / (aNew.multiplier * bNew.multiplier);
+
+    return result;
   }
 };
